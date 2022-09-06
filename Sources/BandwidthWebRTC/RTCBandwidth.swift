@@ -14,8 +14,31 @@ public protocol RTCBandwidthDelegate {
 }
 
 public class RTCBandwidth: NSObject {
+
+    /**
+        Signaling server.
+     
+        Used to receive media.
+        Should use a SignalingDelegate to get parameters: SDPOfferParams:
+
+            let signaling = Signaling()
+            signaling?.delegate = self
+    */
     private var signaling: Signaling?
     
+    /**
+     Initialize object with injectable video encoder/decoder factories
+     
+     This encoder/decoder factory include support for all codecs bundled with WebRTC. If using custom
+     codecs, create custom implementations of RTCVideoEncoderFactory and
+     RTCVideoDecoderFactory.
+
+     - Parameters:
+        - encoderFactory:
+        - decoderFactory:
+
+     - Returns: RTCPeerConnectionFactory
+     */
     private static let factory: RTCPeerConnectionFactory = {
         RTCInitializeSSL()
         let videoEncoderFactory = RTCDefaultVideoEncoderFactory()
@@ -24,6 +47,22 @@ public class RTCBandwidth: NSObject {
         return RTCPeerConnectionFactory(encoderFactory: videoEncoderFactory, decoderFactory: videoDecoderFactory)
     }()
     
+    /**
+     Defines the parameters to configure how a new RTCPeerConnection is created.
+
+     - Parameters:
+        - sdpSemantics: Represents the chosen SDP semantics for the RTCPeerConnection.
+        - iceServers: An array of Ice Servers available to be used by ICE.
+        - iceTransportPolicy: Represents the ice transport policy. This exposes the same states in C++, which includes one more state than what exists in the W3C spec.
+        - bundlePolicy:  Represents the media-bundling policy to use when gathering ICE candidates.
+        - rtcpMuxPolicy:  Represents the rtcp mux policy to use when gathering ICE candidates.
+        - candidateNetworkPolicy: Represents the candidate network policy.
+        - tcpCandidatePolicy: Represents the tcp candidate policy.
+        - continualGatheringPolicy: Represents the continual gathering policy.
+        - keyType: Represents the encryption key type. Used to generate SSL identity. Default is ECDSA.
+
+     - Returns: RTCConfiguration
+     */
     private let configuration: RTCConfiguration = {
         var configuration = RTCConfiguration()
         configuration.sdpSemantics = .unifiedPlan
@@ -34,13 +73,23 @@ public class RTCBandwidth: NSObject {
         return configuration
     }()
     
+    /**
+     Initialize with mandatory and/or optional constraints.
+     The value for this key should be a base64 encoded string containing the data from the serialized configuration proto.\
+    
+     - Parameters:
+        - mandatoryConstraints:
+        - optionalConstraints:
+     
+     - Returns: RTCMediaConstraints
+     */
     private let mediaConstraints = RTCMediaConstraints(mandatoryConstraints: nil, optionalConstraints: ["DtlsSrtpKeyAgreement": kRTCMediaConstraintsValueTrue])
     
-    // One peer for all published (outgoing) streams, one for all subscribed (incoming) streams.
+    /// One peer for all published (outgoing) streams, one for all subscribed (incoming) streams.
     private var publishingPeerConnection: RTCPeerConnection?
     private var subscribingPeerConnection: RTCPeerConnection?
     
-    // Standard data channels used for platform diagnostics and health checks.
+    /// Standard data channels used for platform diagnostics and health checks.
     private var publishHeartbeatDataChannel: RTCDataChannel?
     private var publishDiagnosticsDataChannel: RTCDataChannel?
     private var publishedDataChannels: [String: RTCDataChannel] = [:]
@@ -48,12 +97,12 @@ public class RTCBandwidth: NSObject {
     private var subscribeDiagnosticsDataChannel: RTCDataChannel?
     private var subscribedDataChannels: [String: RTCDataChannel] = [:]
     
-    // Published (outgoing) streams keyed by media stream id (msid).
+    /// Published (outgoing) streams keyed by media stream id (msid).
     private var publishedStreams: [String: PublishedStream] = [:]
-    // Subscribed (incoming) streams keyed by media stream id (msid).
+    /// Subscribed (incoming) streams keyed by media stream id (msid).
     private var subscribedStreams: [String: StreamMetadata] = [:]
     
-    // Keep track of our available streams. Prevents duplicate stream available / unavailable events.
+    /// Keep track of our available streams. Prevents duplicate stream available / unavailable events.
     private var availableMediaStreams: [String: RTCMediaStream] = [:]
     
     #if os(iOS)
@@ -72,11 +121,14 @@ public class RTCBandwidth: NSObject {
         configureAudioSession()
     }
     
-    
-    /// Connect to the signaling server to start publishing media.
-    /// - Parameters:
-    ///   - token: Token returned from Bandwidth's servers giving permission to access WebRTC.
-    ///   - completion: The completion handler to call when the connect request is complete.
+    /**
+     Connect to the signaling server to start publishing media.
+     Uses token and sdkVersion.
+     
+     - Parameters:
+       - token: Token returned from Bandwidth's servers giving permission to access WebRTC.
+       - completion: The completion handler to call when the connect request is complete.
+     */
     public func connect(using token: String, completion: @escaping (Result<(), Error>) -> Void) {
         signaling = Signaling()
         signaling?.delegate = self
@@ -89,10 +141,13 @@ public class RTCBandwidth: NSObject {
         }
     }
     
-    /// Connect to the signaling server to start publishing media.
-    /// - Parameters:
-    ///   - url: Complete URL containing everything required to access WebRTC.
-    ///   - completion: The completion handler to call when the connect request is complete.
+    /**
+     Connect to the signaling server to start publishing media.
+     
+     - Parameters:
+       - url: Complete URL containing everything required to access WebRTC.
+       - completion: The completion handler to call when the connect request is complete.
+     */
     public func connect(to url: URL, completion: @escaping (Result<(), Error>) -> Void) {
         signaling = Signaling()
         signaling?.delegate = self
@@ -112,6 +167,13 @@ public class RTCBandwidth: NSObject {
         subscribingPeerConnection = nil
     }
 
+    /**
+     Publishing RTCStream that containce
+     mediaType, RTCMediaStream, alias and participantId
+     - Parameters:
+       - alias:
+       - completion:
+     */
     public func publish(alias: String?, completion: @escaping (RTCStream) -> Void) {
         setupPublishingPeerConnection {
             let mediaStream = RTCBandwidth.factory.mediaStream(withStreamId: UUID().uuidString)
@@ -138,6 +200,14 @@ public class RTCBandwidth: NSObject {
         }
     }
     
+    /**
+     Gives a new *heartbeat* data channel with the given label and configuration
+
+     - Parameters:
+       - peerConnection:
+
+     - Returns: RTCDataChannel
+     */
     private func addHeartbeatDataChannel(peerConnection: RTCPeerConnection) -> RTCDataChannel? {
         let configuration = RTCDataChannelConfiguration()
         configuration.channelId = 0
@@ -147,6 +217,13 @@ public class RTCBandwidth: NSObject {
         return peerConnection.dataChannel(forLabel: "__heartbeat__", configuration: configuration)
     }
     
+    /**
+     Gives a new *diagnostics* data channel with the given label and configuration
+     - Parameters:
+       - peerConnection:
+
+     - Returns: RTCDataChannel
+     */
     private func addDiagnosticsDataChannel(peerConnection: RTCPeerConnection) -> RTCDataChannel? {
         let configuration = RTCDataChannelConfiguration()
         configuration.channelId = 1
@@ -159,6 +236,7 @@ public class RTCBandwidth: NSObject {
         return dataChannel
     }
     
+    /// Publish / (re)publish existing media streams.
     private func setupPublishingPeerConnection(completion: @escaping () -> Void) {
         guard publishingPeerConnection == nil else {
             completion()
@@ -194,6 +272,7 @@ public class RTCBandwidth: NSObject {
         }
     }
     
+    /// Publish / (re)publish existing media streams.
     private func setupSubscribingPeerConnection() {
         subscribingPeerConnection = RTCBandwidth.factory.peerConnection(with: configuration, constraints: mediaConstraints, delegate: self)
         
@@ -402,6 +481,7 @@ public class RTCBandwidth: NSObject {
     }
 }
 
+//MARK: - RTCPeerConnectionDelegate
 extension RTCBandwidth: RTCPeerConnectionDelegate {
     public func peerConnection(_ peerConnection: RTCPeerConnection, didChange stateChanged: RTCSignalingState) {
         
@@ -501,17 +581,30 @@ extension RTCBandwidth: RTCPeerConnectionDelegate {
     }
 }
 
+//MARK: - RTCDataChannelDelegate
 extension RTCBandwidth: RTCDataChannelDelegate {
+    /// The data channel state changed.
+    /// - Parameters:
+    ///   - dataChannel:
     public func dataChannelDidChangeState(_ dataChannel: RTCDataChannel) {
         
     }
     
+    /// The data channel successfully received a data buffer.
+    /// - Parameters:
+    ///   - dataChannel:
+    ///   - buffer:
     public func dataChannel(_ dataChannel: RTCDataChannel, didReceiveMessageWith buffer: RTCDataBuffer) {
         debugPrint("Diagnostics Received: \(String(data: buffer.data, encoding: .utf8) ?? "")")
     }
 }
 
+//MARK: - SignalingDelegate
 extension RTCBandwidth: SignalingDelegate {
+    /// The Signaling server callback.
+    /// - Parameters:
+    ///   - signaling:
+    ///   - parameters:
     func signaling(_ signaling: Signaling, didRecieveOfferSDP parameters: SDPOfferParams) {
         handleSubscribeOfferSDP(parameters: parameters) {
             
