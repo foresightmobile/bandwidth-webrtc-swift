@@ -16,36 +16,26 @@ enum SignalingMethod: String {
     case leave
 }
 
+//MARK: - SignalingProvider
+protocol Signaling: AnyObject {
+    var delegate: SignalingDelegate? { get set }
+    func connect(to url: URL, completion: @escaping (Result<(), Error>) -> Void)
+    func disconnect()
+    func offer(sdp: String, publishMetadata: PublishMetadata, completion: @escaping (Result<OfferSDPResult?, Error>) -> Void)
+    func answer(sdp: String, completion: @escaping (Result<AnswerSDPResult?, Error>) -> Void)
+}
+
+//MARK: - SignalingDelegate
 protocol SignalingDelegate {
     func signaling(_ signaling: Signaling, didRecieveOfferSDP parameters: SDPOfferParams)
 }
 
-class Signaling {
+//MARK: - Signaling
+class SignalingImpl: Signaling {
     private let client = Client()
     private var hasSetMediaPreferences = false
     
     var delegate: SignalingDelegate?
-    
-    func connect(using token: String, sdkVersion: String, completion: @escaping (Result<(), Error>) -> Void) {
-        var urlComponents = URLComponents()
-        urlComponents.scheme = "wss"
-        urlComponents.host = "device.webrtc.bandwidth.com"
-        urlComponents.path = "/v3"
-        urlComponents.queryItems = [
-            URLQueryItem(name: "token", value: token),
-            URLQueryItem(name: "sdkVersion", value: sdkVersion),
-            URLQueryItem(name: "uniqueId", value: UUID().uuidString)
-        ]
-        
-        guard let url = urlComponents.url else {
-            completion(.failure(SignalingError.invalidWebSocketURL))
-            return
-        }
-        
-        connect(to: url) { result in
-            completion(result)
-        }
-    }
     
     func connect(to url: URL, completion: @escaping (Result<(), Error>) -> Void) {
         do {
