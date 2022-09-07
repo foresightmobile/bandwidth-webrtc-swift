@@ -19,6 +19,7 @@ public class BandwidthKit {
 
     /// Single point of entry for the bandwidth SDK
     public static func getBandwidth() -> BandwidthProvider {
+       //TODO: - use property or constructor injectionf for signaling mechanism
         return RTCBandwidth()
     }
 }
