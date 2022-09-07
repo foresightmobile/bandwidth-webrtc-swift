@@ -136,7 +136,7 @@ class RTCBandwidth: NSObject, BandwidthProvider {
             completion(.failure(SignalingError.invalidWebSocketURL))
             return
         }
-        signaling = Signaling()
+        signaling = SignalingImpl()
         signaling?.delegate = self
         
         signaling?.connect(to: url) { result in
