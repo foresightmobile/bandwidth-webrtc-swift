@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct OfferSDPResult: Decodable {
+public struct OfferSDPResult: Decodable {
     let endpointId: String
     let sdpAnswer: String
     let streamMetadata: [String: StreamMetadata]

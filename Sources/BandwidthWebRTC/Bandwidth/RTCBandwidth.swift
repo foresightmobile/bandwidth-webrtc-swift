@@ -15,10 +15,10 @@ class RTCBandwidth: NSObject, BandwidthProvider {
         Used to receive media.
         Should use a SignalingDelegate to get parameters: SDPOfferParams:
 
-            let signaling = Signaling()
+            let signaling = Signaling.getSignaling()
             signaling?.delegate = self
     */
-    private var signaling: Signaling?
+    private var signaling: SignalingProvider?
     
     /**
      Initialize object with injectable video encoder/decoder factories
@@ -105,9 +105,9 @@ class RTCBandwidth: NSObject, BandwidthProvider {
     
     private let audioQueue = DispatchQueue(label: "audio")
 
-    var delegate: BandwidthProviderDelegate?
-    var dataChannelDelegate: DataChannelDelegate?
-    var peerConnectionDelegate: PeerConnectionDelegate?
+    weak var delegate: BandwidthProviderDelegate?
+    weak var dataChannelDelegate: DataChannelDelegate?
+    weak var peerConnectionDelegate: PeerConnectionDelegate?
     
     override init() {
         super.init()
@@ -136,7 +136,7 @@ class RTCBandwidth: NSObject, BandwidthProvider {
             completion(.failure(SignalingError.invalidWebSocketURL))
             return
         }
-        signaling = SignalingImpl()
+        signaling = Signaling.getSignaling()
         signaling?.delegate = self
         
         signaling?.connect(to: url) { result in
@@ -626,7 +626,7 @@ extension RTCBandwidth: SignalingDelegate {
     /// - Parameters:
     ///   - signaling:
     ///   - parameters:
-    func signaling(_ signaling: Signaling, didRecieveOfferSDP parameters: SDPOfferParams) {
+    func signaling(_ signaling: SignalingProvider, didRecieveOfferSDP parameters: SDPOfferParams) {
         handleSubscribeOfferSDP(parameters: parameters) {
             
         }

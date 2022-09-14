@@ -15,7 +15,8 @@ let package = Package(
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
-        .package(url: "https://github.com/Bandwidth/json-rpc-websockets.git", .upToNextMajor(from: "0.1.0")),
+//        .package(url: "https://github.com/Bandwidth/json-rpc-websockets.git", .upToNextMajor(from: "0.1.0")),
+        .package(url: "https://github.com/foresightmobile/json-rpc-websockets.git", .branch("feature/interface")),
         .package(name: "webrtc", url: "https://github.com/Bandwidth/webrtc-swift.git", .upToNextMajor(from: "1.0.0"))
     ],
     targets: [
