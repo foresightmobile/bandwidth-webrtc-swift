@@ -17,19 +17,4 @@ final class UserAgentTests: XCTestCase {
         
         XCTAssertEqual(userAgent.build(packageName: packageName), "\(packageName) \(version)")
     }
-    
-    func testBandwidthEndpoint() {
-        let sdkVersion = UUID().uuidString
-        let token = UUID().uuidString
-        let uniqueId = UUID().uuidString
-        
-        let stubUrl = URL(string: "https://www.bandwidth.com")!
-        let urlEndpoint = EndpointType.url(stubUrl)
-        
-        let bandwidthTokenStubUrl = URL(string: "wss://device.webrtc.bandwidth.com/v3?token=\(token)&sdkVersion=\(sdkVersion)&uniqueId=\(uniqueId)")!
-        let bandwidthUrl = BandwidthEndpoint.using(token: token, sdkVersion: sdkVersion, uniqueId: uniqueId).url
-       
-        XCTAssertEqual(bandwidthTokenStubUrl, bandwidthUrl)
-        XCTAssertEqual(stubUrl, urlEndpoint.url)
-    }
 }
