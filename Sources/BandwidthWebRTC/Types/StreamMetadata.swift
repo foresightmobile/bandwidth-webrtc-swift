@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct StreamMetadata: Codable {
+struct StreamMetadata: Codable, Equatable {
     let endpointId: String
     let mediaTypes: [MediaType]
     let alias: String?

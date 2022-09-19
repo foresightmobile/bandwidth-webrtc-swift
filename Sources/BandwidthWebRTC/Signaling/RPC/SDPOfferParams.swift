@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct SDPOfferParams: Codable {
+public struct SDPOfferParams: Codable, Equatable {
     let endpointId: String
     let sdpOffer: String
     let sdpRevision: Int
