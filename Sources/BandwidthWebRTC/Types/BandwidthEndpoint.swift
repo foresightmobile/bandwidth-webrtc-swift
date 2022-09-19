@@ -14,13 +14,13 @@ struct BandwidthEndpoint {
 }
 
 extension BandwidthEndpoint {
-    static func using(token: String, sdkVersion: String) -> BandwidthEndpoint {
+    static func using(token: String, sdkVersion: String, uniqueId: String = UUID().uuidString) -> BandwidthEndpoint {
         return BandwidthEndpoint(
             path: "/v3",
             queryItems: [
                 URLQueryItem(name: "token", value: token),
                 URLQueryItem(name: "sdkVersion", value: sdkVersion),
-                URLQueryItem(name: "uniqueId", value: UUID().uuidString)
+                URLQueryItem(name: "uniqueId", value: uniqueId)
             ]
         )
     }
