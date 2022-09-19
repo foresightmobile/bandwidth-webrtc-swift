@@ -7,6 +7,6 @@
 
 import Foundation
 
-public struct AnswerSDPResult: Codable, Equatable {
+struct AnswerSDPResult: Codable {
     
 }
