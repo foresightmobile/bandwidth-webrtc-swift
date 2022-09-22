@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'bandwidth-webrtc-swift'
   s.version          = '1.0.0'
-  s.summary          = 'A short description of bandwidth-webrtc-swift.'
+  s.summary          = 'description for bandwidth-webrtc-swift.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -21,11 +21,11 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://github.com/artemHrebinikChisw/bandwidth-webrtc-swift'
+  s.homepage         = 'https://github.com/foresightmobile/bandwidth-webrtc-swift'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
-  s.license          = { :type => 'MIT', :file => 'LICENSE' }
+  s.license          = { :type => 'MIT', :file => 'LICENSE.txt' }
   s.author           = { 'artemHrebinikChisw' => '75477796+artemHrebinikChisw@users.noreply.github.com' }
-  s.source           = { :git => 'https://github.com/artemHrebinikChisw/bandwidth-webrtc-swift.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/foresightmobile/bandwidth-webrtc-swift.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '13.0'
   s.swift_version = '5.0'
