@@ -51,38 +51,28 @@ class SignalingImpl: SignalingProvider {
 
     func connect(to url: URL, completion: @escaping (Result<(), Error>) -> Void) {
         do {
-            print("1")
             try client.subscribe(to: SignalingMethod.sdpOffer.rawValue, type: SDPOfferParams.self)
-            print("2")
-            client.on(method: SignalingMethod.sdpOffer.rawValue, type: SDPOfferParams.self) { parameters in
-                print("3")
+            client.on(method: SignalingMethod.sdpOffer.rawValue, type: SDPOfferParams.self) { [weak self] parameters in
+                guard let self = self else { return }
                 self.delegate?.signaling(self, didRecieveOfferSDP: parameters)
             }
         } catch {
-            print("4")
-            print("4:", error.localizedDescription)
             completion(.failure(error))
         }
         
-        print("5")
-        client.connect(url: url, queue: nil) {
-            print("6")
+        client.connect(url: url, queue: nil) { [weak self] in
+            guard let self = self else { return }
             if !self.hasSetMediaPreferences {
-                print("7")
                 self.setMediaPreferences(protocol: "WEBRTC") { result in
                     self.hasSetMediaPreferences = true
-                    print("8")
                     switch result {
                     case .success:
-                        print("8.8")
                         completion(.success(()))
                     case .failure(let error):
-                        print("8.err")
                         completion(.failure(error))
                     }
                 }
             } else {
-                print("9")
                 completion(.success(()))
             }
         }
