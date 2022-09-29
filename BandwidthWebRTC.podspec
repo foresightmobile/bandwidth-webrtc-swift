@@ -7,7 +7,7 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = 'bandwidth-webrtc-swift'
+  s.name             = 'BandwidthWebRTC'
   s.version          = '1.0.0'
   s.summary          = 'description for bandwidth-webrtc-swift.'
 
@@ -22,7 +22,6 @@ TODO: Add long description of the pod here.
                        DESC
 
   s.homepage         = 'https://github.com/foresightmobile/bandwidth-webrtc-swift'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE.txt' }
   s.author           = { 'artemHrebinikChisw' => '75477796+artemHrebinikChisw@users.noreply.github.com' }
   s.source           = { :git => 'https://github.com/foresightmobile/bandwidth-webrtc-swift.git', :tag => s.version.to_s }
@@ -30,6 +29,11 @@ TODO: Add long description of the pod here.
   s.ios.deployment_target = '13.0'
   s.swift_version = '5.0'
   s.source_files = 'Sources/BandwidthWebRTC/**/*'
+  s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
+  s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
+  
+  s.dependency 'JSONRPCWebSockets', '~> 1.0.0'
+  s.dependency 'webrtc-swift', '~> 1.0.0'
 end
 
 

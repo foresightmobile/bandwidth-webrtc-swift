@@ -7,7 +7,6 @@
 
 import Foundation
 import JSONRPCWebSockets
-
 enum SignalingMethod: String {
     case answerSDP = "answerSdp"
     case offerSDP = "offerSdp"

@@ -28,11 +28,18 @@ let package = Package(
             name: "BandwidthWebRTC",
             dependencies: [.product(name: "JSONRPCWebSockets", package: "json-rpc-websockets"),
                            .product(name: "WebRTC", package: "webrtc")],
-            resources: [.copy("Settings.plist")]
+            resources: [.copy("Settings.plist")],
+            swiftSettings: [
+              .define("SPM")
+            ]
         ),
         .testTarget(
             name: "BandwidthWebRTCTests",
             dependencies: ["BandwidthWebRTC"],
-            resources: [.copy("Settings.plist")]),
+            resources: [.copy("Settings.plist")],
+            swiftSettings: [
+              .define("SPM")
+            ]
+        ),
     ]
 )

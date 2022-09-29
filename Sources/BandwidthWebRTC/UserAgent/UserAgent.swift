@@ -42,3 +42,10 @@ struct UserAgent {
         return userAgentComponents.joined(separator: " ")
     }
 }
+
+
+#if !SPM
+extension Bundle {
+  static var module: Bundle { Bundle(identifier: "bandwidth-webrtc_BandwidthWebRTC")! }
+}
+#endif

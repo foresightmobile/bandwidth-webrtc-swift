@@ -1,6 +1,0 @@
-use_frameworks!
-target 'bandwidth-webrtc-swift_Tests' do
-  pod 'bandwidth-webrtc-swift', :path => '../'
-  
-  
-end
