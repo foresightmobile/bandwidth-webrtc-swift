@@ -30,7 +30,9 @@ extension BandwidthEndpoint {
     var url: URL? {
         var components = URLComponents()
         components.scheme = "wss"
-        components.host = "device.webrtc.bandwidth.com"
+//        components.host = "device.webrtc.bandwidth.com"
+        //TODO: - provide global configutation service
+        components.host = "device-rtc.edge.bandwidth.com"
         components.path = path
         components.queryItems = queryItems
 
