@@ -46,6 +46,6 @@ struct UserAgent {
 
 #if !SPM
 extension Bundle {
-  static var module: Bundle { Bundle(identifier: "bandwidth-webrtc_BandwidthWebRTC")! }
+  static var module: Bundle { Bundle(identifier: "org.cocoapods.BandwidthWebRTC")! }
 }
 #endif
