@@ -1,4 +1,4 @@
-// swift-tools-version:5.3
+// swift-tools-version: 5.4
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -13,21 +13,16 @@ let package = Package(
             targets: ["BandwidthWebRTC"]),
     ],
     dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
-//        .package(url: "https://github.com/Bandwidth/json-rpc-websockets.git", .upToNextMajor(from: "0.1.0")),
-        //changed json-rpc-websockets version to specific branh to unit tests
-
         .package(url: "https://github.com/foresightmobile/json-rpc-websockets.git", .branch("dev")),
-        .package(name: "webrtc", url: "https://github.com/Bandwidth/webrtc-swift.git", .upToNextMajor(from: "1.0.0"))
+        .package(url: "https://github.com/webrtc-sdk/Specs.git", from: "104.5112.04")
     ],
     targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "BandwidthWebRTC",
-            dependencies: [.product(name: "JSONRPCWebSockets", package: "json-rpc-websockets"),
-                           .product(name: "WebRTC", package: "webrtc")],
+            dependencies: [
+                .product(name: "JSONRPCWebSockets", package: "json-rpc-websockets"),
+                .product(name: "WebRTC", package: "Specs")
+            ],
             resources: [.copy("Settings.plist")],
             swiftSettings: [
               .define("SPM")
@@ -41,5 +36,6 @@ let package = Package(
               .define("SPM")
             ]
         ),
-    ]
+    ],
+    swiftLanguageVersions: [.v5]
 )
