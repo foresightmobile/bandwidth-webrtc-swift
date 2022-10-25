@@ -27,13 +27,13 @@ TODO: Add long description of the pod here.
   s.source           = { :git => 'https://github.com/foresightmobile/bandwidth-webrtc-swift.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '13.0'
+  s.osx.deployment_target = '10.15'
+  
   s.swift_version = '5.0'
   s.source_files = 'Sources/BandwidthWebRTC/**/*'
-  s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
-  s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
-  
+
   s.dependency 'JSONRPCWebSockets', '~> 1.0.0'
-  s.dependency 'webrtc-swift', '~> 1.0.0'
+  s.dependency 'WebRTC-SDK', '~> 104.5112.05'
 end
 
 
