@@ -1,0 +1,399 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CE6D8676290B2269001FFEDD /* BandwidthWebRTC in Frameworks */ = {isa = PBXBuildFile; productRef = CE6D8675290B2269001FFEDD /* BandwidthWebRTC */; };
+		CE82B40F290ABA0A00445B6B /* JoinCallResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82B40E290ABA0A00445B6B /* JoinCallResponse.swift */; };
+		CE82B412290ABA1900445B6B /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82B410290ABA1900445B6B /* VideoView.swift */; };
+		CE82B413290ABA1900445B6B /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82B411290ABA1900445B6B /* ViewModel.swift */; };
+		CEA676F6290AB85D00CC502F /* BandwidthSwiftUISampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA676F5290AB85D00CC502F /* BandwidthSwiftUISampleApp.swift */; };
+		CEA676F8290AB85D00CC502F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA676F7290AB85D00CC502F /* ContentView.swift */; };
+		CEA676FA290AB85E00CC502F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEA676F9290AB85E00CC502F /* Assets.xcassets */; };
+		CEA676FD290AB85E00CC502F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEA676FC290AB85E00CC502F /* Preview Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		CE82B40E290ABA0A00445B6B /* JoinCallResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinCallResponse.swift; sourceTree = "<group>"; };
+		CE82B410290ABA1900445B6B /* VideoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
+		CE82B411290ABA1900445B6B /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		CEA676F2290AB85D00CC502F /* BandwidthSwiftUISample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BandwidthSwiftUISample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEA676F5290AB85D00CC502F /* BandwidthSwiftUISampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BandwidthSwiftUISampleApp.swift; sourceTree = "<group>"; };
+		CEA676F7290AB85D00CC502F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		CEA676F9290AB85E00CC502F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CEA676FC290AB85E00CC502F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CEA676EF290AB85C00CC502F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE6D8676290B2269001FFEDD /* BandwidthWebRTC in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CE15710B290AC0A8008D3629 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CEA676E9290AB85C00CC502F = {
+			isa = PBXGroup;
+			children = (
+				CEA676F4290AB85D00CC502F /* BandwidthSwiftUISample */,
+				CEA676F3290AB85D00CC502F /* Products */,
+				CE15710B290AC0A8008D3629 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		CEA676F3290AB85D00CC502F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CEA676F2290AB85D00CC502F /* BandwidthSwiftUISample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CEA676F4290AB85D00CC502F /* BandwidthSwiftUISample */ = {
+			isa = PBXGroup;
+			children = (
+				CEA676F5290AB85D00CC502F /* BandwidthSwiftUISampleApp.swift */,
+				CEA676F7290AB85D00CC502F /* ContentView.swift */,
+				CE82B40E290ABA0A00445B6B /* JoinCallResponse.swift */,
+				CE82B410290ABA1900445B6B /* VideoView.swift */,
+				CE82B411290ABA1900445B6B /* ViewModel.swift */,
+				CEA676F9290AB85E00CC502F /* Assets.xcassets */,
+				CEA676FB290AB85E00CC502F /* Preview Content */,
+			);
+			path = BandwidthSwiftUISample;
+			sourceTree = "<group>";
+		};
+		CEA676FB290AB85E00CC502F /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				CEA676FC290AB85E00CC502F /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CEA676F1290AB85C00CC502F /* BandwidthSwiftUISample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CEA67700290AB85E00CC502F /* Build configuration list for PBXNativeTarget "BandwidthSwiftUISample" */;
+			buildPhases = (
+				CEA676EE290AB85C00CC502F /* Sources */,
+				CEA676EF290AB85C00CC502F /* Frameworks */,
+				CEA676F0290AB85C00CC502F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BandwidthSwiftUISample;
+			packageProductDependencies = (
+				CE6D8675290B2269001FFEDD /* BandwidthWebRTC */,
+			);
+			productName = BandwidthSwiftUISample;
+			productReference = CEA676F2290AB85D00CC502F /* BandwidthSwiftUISample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CEA676EA290AB85C00CC502F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					CEA676F1290AB85C00CC502F = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+				};
+			};
+			buildConfigurationList = CEA676ED290AB85C00CC502F /* Build configuration list for PBXProject "BandwidthSwiftUISample" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CEA676E9290AB85C00CC502F;
+			packageReferences = (
+				CE6D8674290B2269001FFEDD /* XCRemoteSwiftPackageReference "bandwidth-webrtc-swift" */,
+			);
+			productRefGroup = CEA676F3290AB85D00CC502F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CEA676F1290AB85C00CC502F /* BandwidthSwiftUISample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CEA676F0290AB85C00CC502F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEA676FD290AB85E00CC502F /* Preview Assets.xcassets in Resources */,
+				CEA676FA290AB85E00CC502F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CEA676EE290AB85C00CC502F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE82B413290ABA1900445B6B /* ViewModel.swift in Sources */,
+				CE82B412290ABA1900445B6B /* VideoView.swift in Sources */,
+				CEA676F8290AB85D00CC502F /* ContentView.swift in Sources */,
+				CE82B40F290ABA0A00445B6B /* JoinCallResponse.swift in Sources */,
+				CEA676F6290AB85D00CC502F /* BandwidthSwiftUISampleApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		CEA676FE290AB85E00CC502F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CEA676FF290AB85E00CC502F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CEA67701290AB85E00CC502F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"BandwidthSwiftUISample/Preview Content\"";
+				DEVELOPMENT_TEAM = 3VTG976PZS;
+				ENABLE_BITCODE = NO;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Requires camera access to capture and transmit video.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Requires microphone access to capture and transmit audio.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.home.BandwidthSwiftUISample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CEA67702290AB85E00CC502F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"BandwidthSwiftUISample/Preview Content\"";
+				DEVELOPMENT_TEAM = 3VTG976PZS;
+				ENABLE_BITCODE = NO;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Requires camera access to capture and transmit video.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Requires microphone access to capture and transmit audio.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.home.BandwidthSwiftUISample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CEA676ED290AB85C00CC502F /* Build configuration list for PBXProject "BandwidthSwiftUISample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CEA676FE290AB85E00CC502F /* Debug */,
+				CEA676FF290AB85E00CC502F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CEA67700290AB85E00CC502F /* Build configuration list for PBXNativeTarget "BandwidthSwiftUISample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CEA67701290AB85E00CC502F /* Debug */,
+				CEA67702290AB85E00CC502F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CE6D8674290B2269001FFEDD /* XCRemoteSwiftPackageReference "bandwidth-webrtc-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/foresightmobile/bandwidth-webrtc-swift";
+			requirement = {
+				branch = dev;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CE6D8675290B2269001FFEDD /* BandwidthWebRTC */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE6D8674290B2269001FFEDD /* XCRemoteSwiftPackageReference "bandwidth-webrtc-swift" */;
+			productName = BandwidthWebRTC;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = CEA676EA290AB85C00CC502F /* Project object */;
+}
