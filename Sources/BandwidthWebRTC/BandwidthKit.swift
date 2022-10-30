@@ -42,7 +42,7 @@ public protocol BandwidthProvider: AnyObject {
      - Parameters:
        - endpointType: Сonnection type. Сan be url or token
             - url: Complete URL containing everything required to access WebRTC.
-            - token: Token returned from Bandwidth's servers giving permission to access WebRTC.
+            - token:host: Token returned from Bandwidth's servers giving permission to access WebRTC.
        - completion: The completion handler to call when the connect request is complete.
      */
     func connect(with endpointType: EndpointType, completion: @escaping (Result<(), Error>) -> Void)
