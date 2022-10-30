@@ -23,7 +23,7 @@ extension BandwidthEndpoint {
                 URLQueryItem(name: "sdkVersion", value: sdkVersion),
                 URLQueryItem(name: "uniqueId", value: uniqueId)
             ],
-            hostUrl: host.rawValue
+            hostUrl: host.hostUrl
         )
     }
 }
@@ -38,9 +38,4 @@ extension BandwidthEndpoint {
 
         return components.url
     }
-}
-
-public enum HostEnvironment: String {
-    case live = "device.webrtc.bandwidth.com"
-    case edge = "device-rtc.edge.bandwidth.com"
 }
