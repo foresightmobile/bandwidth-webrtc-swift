@@ -11,7 +11,7 @@ import Foundation
 
 public enum EndpointType {
     case url(URL)
-    case token(String)
+    case token(String, host: HostEnvironment)
 }
 
 extension EndpointType {
@@ -19,9 +19,9 @@ extension EndpointType {
         switch self {
         case let .url(uRL):
             return uRL
-        case let .token(token):
+        case let .token(token, host):
             let version = BandwidthKit.sdkVersion
-            let endpoint = BandwidthEndpoint.using(token: token, sdkVersion: version)
+            let endpoint = BandwidthEndpoint.using(token: token, sdkVersion: version, host: host)
             return endpoint.url
         }
     }

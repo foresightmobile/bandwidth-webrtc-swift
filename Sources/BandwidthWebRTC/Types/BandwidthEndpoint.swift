@@ -11,17 +11,19 @@ import Foundation
 struct BandwidthEndpoint {
     let path: String
     let queryItems: [URLQueryItem]
+    let hostUrl: String
 }
 
 extension BandwidthEndpoint {
-    static func using(token: String, sdkVersion: String, uniqueId: String = UUID().uuidString) -> BandwidthEndpoint {
+    static func using(token: String, sdkVersion: String, uniqueId: String = UUID().uuidString, host: HostEnvironment) -> BandwidthEndpoint {
         return BandwidthEndpoint(
             path: "/v3",
             queryItems: [
                 URLQueryItem(name: "token", value: token),
                 URLQueryItem(name: "sdkVersion", value: sdkVersion),
                 URLQueryItem(name: "uniqueId", value: uniqueId)
-            ]
+            ],
+            hostUrl: host.rawValue
         )
     }
 }
@@ -30,12 +32,15 @@ extension BandwidthEndpoint {
     var url: URL? {
         var components = URLComponents()
         components.scheme = "wss"
-//        components.host = "device.webrtc.bandwidth.com"
-        //TODO: - provide global configutation service
-        components.host = "device-rtc.edge.bandwidth.com"
+        components.host = hostUrl
         components.path = path
         components.queryItems = queryItems
 
         return components.url
     }
+}
+
+public enum HostEnvironment: String {
+    case live = "device.webrtc.bandwidth.com"
+    case edge = "device-rtc.edge.bandwidth.com"
 }
