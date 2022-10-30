@@ -7,7 +7,6 @@ Pod::Spec.new do |s|
   s.author           = 'Bandwidth'
 
   s.ios.deployment_target = '13.0'
-  s.osx.deployment_target = '10.15'
   
   s.swift_version = '5.0'
   s.source           = { :git => 'https://github.com/foresightmobile/bandwidth-webrtc-swift.git', :tag => s.version.to_s }
