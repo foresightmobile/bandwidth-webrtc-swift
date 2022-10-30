@@ -19,7 +19,7 @@ final class EndpointTest: XCTestCase {
         let urlEndpoint = EndpointType.url(stubUrl)
         
         let bandwidthTokenStubUrl = URL(string: "wss://device.webrtc.bandwidth.com/v3?token=\(token)&sdkVersion=\(sdkVersion)&uniqueId=\(uniqueId)")!
-        let bandwidthUrl = BandwidthEndpoint.using(token: token, sdkVersion: sdkVersion, uniqueId: uniqueId).url
+        let bandwidthUrl = BandwidthEndpoint.using(token: token, sdkVersion: sdkVersion, uniqueId: uniqueId, host: .live).url
        
         XCTAssertEqual(bandwidthTokenStubUrl, bandwidthUrl)
         XCTAssertEqual(stubUrl, urlEndpoint.url)

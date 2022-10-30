@@ -33,7 +33,7 @@ class SignalingTests: XCTestCase {
         let expectation = self.expectation(description: #function)
         var capturedResult: Result<(), Error>?
         
-        let endpoint = BandwidthEndpoint.using(token: UUID().uuidString, sdkVersion: UUID().uuidString)
+        let endpoint = BandwidthEndpoint.using(token: UUID().uuidString, sdkVersion: UUID().uuidString, host: .live)
         let SDPOfferParamsStub = SDPOfferParams(endpointId: "1", sdpOffer: "", sdpRevision: 00, streamMetadata: [:])
         delegateMock.shouldReturnStubData = .some(SDPOfferParamsStub)
         let stubMedia = SetMediaPreferencesParameters(protocol: "protocol")
@@ -116,7 +116,7 @@ class SignalingTests: XCTestCase {
         expectation.assertForOverFulfill = false
         var capturedResult: Result<(), Error>?
         
-        let endpoint = BandwidthEndpoint.using(token: UUID().uuidString, sdkVersion: UUID().uuidString)
+        let endpoint = BandwidthEndpoint.using(token: UUID().uuidString, sdkVersion: UUID().uuidString, host: .live)
         
         let stubError = ClientError.duplicateSubscription
         fakeClient.shouldSubscribeMethodReturnError = .some(stubError)
@@ -147,7 +147,7 @@ class SignalingTests: XCTestCase {
         
         var capturedResult: Result<(), Error>?
         
-        let stubEndpoint = BandwidthEndpoint.using(token: UUID().uuidString, sdkVersion: UUID().uuidString)
+        let stubEndpoint = BandwidthEndpoint.using(token: UUID().uuidString, sdkVersion: UUID().uuidString, host: .live)
         let stubMedia = SetMediaPreferencesParameters(protocol: "protocol")
         fakeClient.returnStubInput = .value(.some(stubMedia))
         

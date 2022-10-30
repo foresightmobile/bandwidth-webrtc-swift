@@ -28,7 +28,7 @@ struct UserAgent {
             userAgentComponents.append(settings.version)
         }
         
-        #if os(iOS)
+        #if os(iOS) && !targetEnvironment(simulator)
         let systemName = UIDevice.current.systemName
         userAgentComponents.append(systemName)
         
