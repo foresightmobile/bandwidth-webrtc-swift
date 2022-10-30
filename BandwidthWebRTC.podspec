@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.exclude_files = "Sources/BandwidthWebRTC/**/*.plist"
  
   s.dependency 'JSONRPCWebSockets', '~> 1.0.1'
-  s.dependency 'WebRTC-SDK', '~> 104.5112.05'
+  s.dependency 'WebRTC-SDK'
 end
 
 
