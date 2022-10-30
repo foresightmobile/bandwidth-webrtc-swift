@@ -4,9 +4,37 @@ Bandwidth WebRTC Swift is an open-source implementation of [Bandwidth WebRTC](ht
 
 In order to take advantage of this package a Bandwidth account with WebRTC Audio and/or Video must be enabled.
 
+## Installation
+Use the following lines in your Package manifest
+```swift title="Package.swift"
+let package = Package(
+  ...
+  dependencies: [
+    .package(name: "BandwidthWebrtc", url: "https://github.com/foresightmobile/bandwidth-webrtc-swift", .upToNextMajor("1.0.0")),
+  ],
+  targets: [
+    .target(
+      name: "MyApp",
+      dependencies: ["BandwidthWebrtc"]
+    )
+  ]
+}
+```
+Use the following lines in your Podfile
+
+```podfile
+source 'https://github.com/foresightmobile/Bandwidth_specs.git'
+source 'https://github.com/CocoaPods/Specs.git'
+
+target 'BandwidthExample' do
+  use_frameworks!
+  pod 'BandwidthWebRTC', '~> 1.0.0'
+end
+```
+
 ## Quick Start
 
-```swiftUI
+```swift
 import WebRTC
 import BandwidthWebRTC
 
