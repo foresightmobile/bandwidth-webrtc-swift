@@ -41,7 +41,7 @@ class ViewModel: ObservableObject {
             getToken { [weak self] token in
                 guard let self = self else { return }
 
-                self.bandwidth.connect(with: .token("")) { result in
+                self.bandwidth.connect(with: .deviceToken(token: token.deviceToken, host: .edge)) { result in
                     switch result {
                     case .success:
                         self.bandwidth.publish(alias: "sample") { stream in
